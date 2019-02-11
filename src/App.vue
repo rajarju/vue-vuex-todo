@@ -1,9 +1,11 @@
 <template>
-  <div id="app" class="container">
-    <h1>Vue + Vuex Todo List <small>({{pendingCount}})</small></h1>
+  <div
+    id="app"
+    class="container">
+    <h1>Vue + Vuex Todo List <small>({{ pendingCount }})</small></h1>
 
     <div class="todos">
-      <todo-list></todo-list>
+      <todo-list/>
     </div>
 
 
@@ -11,9 +13,13 @@
       <form @submit.prevent="addTodo">
         <div class="form-group">
           <label for="todo">Add Task</label>
-          <input id="todo" v-model="newTask" type="text"
-          class="form-control" placeholder="Enter New Task">
-          <small  class="form-text text-muted">Speak your mind out.</small>
+          <input
+            id="todo"
+            v-model="newTask"
+            type="text"
+            class="form-control"
+            placeholder="Enter New Task">
+          <small class="form-text text-muted">Speak your mind out.</small>
         </div>
       </form>
     </div>
@@ -26,13 +32,14 @@ import TodoList from './components/TodoList';
 
 export default {
   name: 'App',
-  data: () => ({
-    newTask: '',
-  }),
 
   components: {
     'todo-list': TodoList,
   },
+
+  data: () => ({
+    newTask: '',
+  }),
 
   computed: {
     ...mapGetters('todo', ['pendingCount']),

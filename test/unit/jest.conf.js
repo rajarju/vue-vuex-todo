@@ -1,13 +1,14 @@
 module.exports = {
-  'moduleNameMapper': {
-    '^vue$': 'vue/dist/vue.common.js'
+  testURL: 'http://localhost',
+  moduleNameMapper: {
+    '^vue$': 'vue/dist/vue.common.js',
   },
-  'moduleFileExtensions': [
+  moduleFileExtensions: [
     'js',
-    'vue'
+    'vue',
   ],
-  'transform': {
+  transform: {
     '^.+\\.js$': 'babel-jest',
-    '.*\\.(vue)$': 'vue-jest'
-  }
+    '.*\\.(vue)$': 'vue-jest',
+  },
 };

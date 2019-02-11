@@ -12,6 +12,4 @@ const store = new Vuex.Store({
 
 });
 
-store.dispatch('todo/loadTodos');
-
 export default store;

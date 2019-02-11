@@ -1,38 +1,57 @@
 <template>
-    <li class="list-group-item todo-item"
-    v-bind:key="todo.id" :class="{completed: todo.completed}">
+  <li
+    :class="{completed: todo.completed}"
+    :key="todo.id"
+    class="list-group-item todo-item" >
 
-      <div v-if="inlineEditId">
+    <div v-if="inlineEditId">
 
-      <input autofocus
-      class="form-control"
-      v-on:blur="cancelInlineEdit()"
-      v-on:keyup="inlineEditKeyup($event)"
-      type="text"  v-model="todo.task" />
+      <input
+        v-model="todo.task"
+        autofocus
+        class="form-control"
+        type="text"
+        @:blur="cancelInlineEdit()"
+        @:keyup="inlineEditKeyup($event)">
 
-      </div>
+    </div>
 
-      <div v-else>
+    <div v-else>
 
-      <input class="edit" type="checkbox"
-      v-model="checked" />
+      <input
+        v-model="checked"
+        class="edit"
+        type="checkbox">
 
-      <a class="item" @click="inlineEdit()">{{todo.task}}</a>
+      <a
+        class="item"
+        @click="inlineEdit()">{{ todo.task }}</a>
 
-      <button @click="deleteTodo(todo.id)" type="button" class="close"  aria-label="Close">
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        @click="deleteTodo(todo.id)">
         <span aria-hidden="true">×</span>
       </button>
 
-      </div>
+    </div>
 
 
-    </li>
+  </li>
 </template>
 
 <script>
 export default {
   name: 'TodoItem',
-  props: ['todo'],
+  props: {
+    todo: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+  },
   data() {
     return { inlineEditId: false };
   },

@@ -2,9 +2,14 @@
   <div class="todo-list">
     <ul class="list-group">
 
-      <li class="list-group-item" v-if="!todos.length" ><i>There are no Items in the list.</i></li>
+      <li
+        v-if="!todos.length"
+        class="list-group-item" ><i>There are no Items in the list.</i></li>
 
-      <todo-item :todo="t" v-bind:key="t.id" v-for="t in todos" ></todo-item>
+      <todo-item
+        v-for="t in todos"
+        :todo="t"
+        :key="t.id" />
 
     </ul>
   </div>
@@ -16,14 +21,14 @@ import TodoItem from './TodoItem';
 
 export default {
   name: 'TodoList',
-  created() {
-    // this.$store.dispatch('todo/loadTodos');
+  components: {
+    'todo-item': TodoItem,
   },
   computed: {
     ...mapGetters('todo', ['todos']),
   },
-  components: {
-    'todo-item': TodoItem,
+  created() {
+    this.$store.dispatch('todo/loadTodos');
   },
 };
 </script>

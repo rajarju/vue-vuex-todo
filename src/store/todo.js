@@ -1,5 +1,14 @@
 
-const API = 'http://5b9361b1bd13d30014269625.mockapi.io/api/todos';
+import {
+  SET_TODOS,
+  ADD_TODO,
+  TOGGLE_TODO,
+  DELETE_TODO,
+  UPDATE_TODO,
+  TODO_ERROR,
+} from './mutation-types';
+
+const API = process.env.API || '/api/todos';
 
 const Todo = {
 
@@ -30,7 +39,7 @@ const Todo = {
      * @param {*} state
      * @param {*} todos
      */
-    SET_TODOS(state, todos) {
+    [SET_TODOS](state, todos) {
       state.todos = todos;
     },
 
@@ -39,7 +48,7 @@ const Todo = {
      * @param {*} state
      * @param {*} todo
      */
-    ADD_TODO(state, todo) {
+    [ADD_TODO](state, todo) {
       state.todos.unshift(todo);
     },
 
@@ -48,7 +57,7 @@ const Todo = {
      * @param {*} state
      * @param {*} id
      */
-    TOGGLE_TODO(state, id) {
+    [TOGGLE_TODO](state, id) {
       const todos = state.todos;
       const todoIndex = todos.findIndex(t => t.id === id);
       if (todoIndex === 0 || todoIndex > 0) {
@@ -62,7 +71,7 @@ const Todo = {
      * @param {*} state
      * @param {*} id
      */
-    DELETE_TODO(state, id) {
+    [DELETE_TODO](state, id) {
       const todos = state.todos;
       const todoIndex = todos.findIndex(t => t.id === id);
       if (todoIndex === 0 || todoIndex > 0) {
@@ -76,7 +85,7 @@ const Todo = {
      * @param {*} state
      * @param {*} payload
      */
-    UPDATE_TODO(state, payload) {
+    [UPDATE_TODO](state, payload) {
       const todos = state.todos;
       todos.forEach((todo, index) => {
         if (todo.id === payload.id) {
@@ -91,7 +100,7 @@ const Todo = {
      * @param {*} state
      * @param {*} err
      */
-    TODO_ERROR(state, err) {
+    [TODO_ERROR](state, err) {
       state.error = err;
     },
   },

@@ -1,11 +1,16 @@
 import Vue from 'vue';
-import App from '../../../src/App'
+import App from '../../../src/App';
+
+const jsdom = require('jsdom');
+
+const { JSDOM } = jsdom;
 
 describe('App.spec.js', () => {
-  let cmp, vm;
+  let cmp,
+    vm;
 
-  const dom = new JSDOM(``, {
-    url: "http://localhost",
+  const dom = new JSDOM('', {
+    url: 'http://localhost',
   });
 
   beforeEach(() => {
