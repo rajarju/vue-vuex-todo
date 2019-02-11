@@ -1,0 +1,8 @@
+[[redirects]]
+  from = "/api/*"
+  to = "http://5b9361b1bd13d30014269625.mockapi.io/api/"
+  status = 301
+  force = true
+  [redirects.headers]
+    X-From = "Netlify"
+    X-Api-Key = "some-api-key-string"
